@@ -3,13 +3,22 @@
 const { spawn } = require("child_process");
 
 const name = process.argv[2];
+const yarnFlag = process.argv[3];
 if (!name || name.match(/[<>:"\/\\|?*\x00-\x1F]/)) {
   return console.log(`
   Invalid directory name.
-  Usage: create-express-api name-of-api  
+  Usage: create-node-express-api name-of-api  
 `);
 }
 
+if (yarnFlag) {
+  if (!yarnFlag || !yarnFlag.match(/^-(-yarn|y)$/)) {
+    return console.log(`
+    Invalid option flag.
+    Usage: create-node-express-api name-of-api [-y|--yarn]
+  `);
+  }
+}
 const repoURL = "https://github.com/Jayvirrathi/node-express-api-starter.git";
 
 runCommand("git", ["clone", repoURL, name])
@@ -18,16 +27,20 @@ runCommand("git", ["clone", repoURL, name])
   })
   .then(() => {
     console.log("Installing dependencies...");
-    return runCommand("npm", ["install"], {
-      cwd: process.cwd() + "/" + name,
-    });
+    return runCommand(
+      yarnFlag ? "yarn.cmd" : "npm.cmd",
+      [yarnFlag ? "" : "install"],
+      {
+        cwd: process.cwd() + "/" + name,
+      }
+    );
   })
   .then(() => {
     console.log("Done! 🏁");
     console.log("");
     console.log("To get started:");
     console.log("cd", name);
-    console.log("npm run dev");
+    console.log(yarnFlag ? "yarn dev" : "npm run dev");
   });
 
 function runCommand(command, args, options = undefined) {

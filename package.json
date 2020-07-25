@@ -1,6 +1,6 @@
 {
   "name": "create-node-express-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "bin": {
     "create-node-express-api": "index.js"
   },
