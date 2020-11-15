@@ -1,6 +1,6 @@
 # create-node-express-api
 
-A CLI to automatically clone the [Node Express API Starter](https://github.com/Jayvirrathi/node-express-api-starter.git).
+A CLI to automatically clone the [Node Express API Starter](https://github.com/Jayvirrathi/create-node-express-api.git).
 
 ## Installation
 
@@ -18,11 +18,7 @@ yarn global add create-node-express-api
 
 ```sh
 # with global install
-create-node-express-api name-of-app  [-y|--yarn]
-# with npx
-npx create-node-express-api name-of-app [-y|--yarn]
-# with yarn create
-yarn create-node-express-api name-of-app [-y|--yarn]
+create-node-express-api name-of-app 
 ```
 
-This will create a directory with the given name, clone the [Node Express API starter](https://github.com/Jayvirrathi/node-express-api-starter.git) repo into it, and install dependencies.
+This will create a directory with the given name, clone the [Node Express API starter](https://github.com/Jayvirrathi/create-node-express-api.git) repo into it, and install dependencies.
